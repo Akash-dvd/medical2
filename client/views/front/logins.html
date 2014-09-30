@@ -1,0 +1,119 @@
+<template name="logins">
+	<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid white-bg">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">M+</a>
+		</div>
+		<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+			<div class=" col-lg-offset-2">
+				{{#autoForm class="form-inline well" collection="Doctor" id="dsearch_login_form" type="method" meteormethod="doctorfind" }}
+					<fieldset>
+						{{> afFieldInput name='username' placeholder="Symptom"}}
+						{{> afFieldInput name='password' placeholder="Place"}}
+						{{> afFieldInput name='password' placeholder="Password" type="date"}}
+						<button type="submit" class="btn btn-primary">Enquire</button>
+					</fieldset>
+				{{/autoForm}}
+			</div>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+	</nav>
+	
+	<div class="white-bg	col-lg-12">
+		<div class="col-lg-8" >
+			
+			<div class="image-hover text-center middle-box" style="position:absolute;">
+				<h1 class="logo-name" style="color:#1AB394;">M+</h1>
+				<h3>Welcome to M+</h3>
+				<p>Perfectly designed and precisely prepared admin application for physicians.</p>
+				<p>Login in. To see it in action.</p>
+			</div>
+			<div class="video-hover">
+				<br>
+				<video class="vid" width='100%' autoplay="autoplay"  loop>
+					<source src="video/video.mp4" type="video/mp4" />
+				</video>
+				<br>
+			</div>
+		</div>
+		<div class="panel blank-panel col-lg-4 text-center">
+			<div class="panel-heading">
+				<div class="panel-options">
+				<ul class="nav nav-justified">
+					<li class="active"><a data-toggle="tab" href="#tabpatinet"><i class="fa fa-user-md fa-2x"></i>Physician</a></li>
+					<li class=""><a data-toggle="tab" href="#tabdoctor"><i class="fa fa-wheelchair fa-2x"></i>Patient</a></li>
+				</ul>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="tab-content">
+					<div id="tabpatinet" class="tab-pane active well">
+						<ul>
+							<li>
+							{{#autoForm collection="Doctor" id="dlogin_form" type="method" meteormethod="doctorlogin" }}
+								<fieldset>
+									<legend>Physician Login</legend>
+									{{> afFieldInput name='username' placeholder="Name"}}
+									{{> afFieldInput name='password' placeholder="Password" type="password"}}
+									<button type="submit" class="btn btn-primary btn-block">Log in</button>
+								</fieldset>
+							{{/autoForm}}
+							</li>
+							<li class="divider">
+							</li>
+							<li>
+							{{#autoForm collection="Doctor" id="dregister_form" type="insert" }} 
+								<fieldset>
+									{{> afFieldInput name='username' placeholder="Name"}}
+									{{> afFieldInput name='password' placeholder="Password" type="password"}}
+									{{> afFieldInput name='patient_id' placeholder="ROSE"}}
+									{{> afFieldInput name='blood_group' placeholder="MARY"}}
+									{{> afFieldInput name='city' placeholder="MARLOW"}}
+									<button type="submit" class="btn btn-primary btn-block">Register</button>
+								</fieldset>
+							{{/autoForm}}
+							</li>
+						</ul>
+					</div>
+					<div id="tabdoctor" class="tab-pane well">
+						<ul>
+							<li>
+							{{#autoForm collection="Patient" id="plogin_form" type="method" meteormethod="patientlogin" }}
+								<fieldset>
+									<legend>Patient Login</legend>
+									{{> afFieldInput name='username' placeholder="Name"}}
+									{{> afFieldInput name='city'  placeholder="Password" type="password"}}
+									<button type="submit" class="btn btn-primary btn-block">Log in</button>
+								</fieldset>
+							{{/autoForm}}
+							</li>
+							<li class="divider"></li>
+							<li>
+							{{#autoForm collection="Patient" id="pregister_form" type="insert" }} 
+								<fieldset>
+									{{> afFieldInput name='username' placeholder="Name"}}
+									{{> afFieldInput name='gender' placeholder="ROSE"}}
+									{{> afFieldInput name='blood_group' placeholder="MARY"}}
+									{{> afFieldInput name='city' placeholder="MARLOW"}}
+									<button type="submit" class="btn btn-primary btn-block">Register</button>
+								</fieldset>
+							{{/autoForm}}
+							</li>
+						</ul>
+					</div>
+					</div>
+			</div>
+		</div>
+		<p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
+	</div>
+</template>
+
+
+

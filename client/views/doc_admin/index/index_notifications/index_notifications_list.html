@@ -1,0 +1,13 @@
+<template name="index_notifications_list">
+	{{#each a_Notifications}}
+      {{>index_notifications_list_array}}
+    {{/each}}
+</template>
+<template name="index_notifications_list_array">
+     <li class="list-group-item">
+         <span class="pull-right">
+             {{time}}
+         </span>
+         <span class="label label-primary">{{counter set}}</span>{{synapse}}
+     </li>
+</template>

@@ -1,0 +1,14 @@
+{
+  "packages": {
+    "bootstrap-3": {},
+    "spin": {},
+    "font-awesome": {},
+    "wizard": {},
+    "peity": {},
+    "fullcalendar2.0": {},
+    "jq-knob": {},
+    "jquery-steps": {},
+    "jquery-qrcode": {},
+    "iron-router": {}
+  }
+}

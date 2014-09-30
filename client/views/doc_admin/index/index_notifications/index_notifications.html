@@ -1,0 +1,9 @@
+<template name="index_notifications">
+<h2>Welcome <!--{{name}}--></h2>
+<small>You have 42 messages and {{msg_count}} notifications.</small>
+  <ul class="list-group clear-list m-t">
+    {{#each c_Notifications}}
+      {{>index_notifications_list}}
+    {{/each}}
+  </ul>
+</template>

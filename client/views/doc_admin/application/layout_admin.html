@@ -1,0 +1,323 @@
+<template name="layout_admin">
+  <div id="wrapper">
+    <nav class="navbar-default navbar-static-side navbar-fixed-top" role="navigation">
+      <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+          <li class="nav-header">
+            <div class="dropdown profile-element">
+              <span>
+              <img alt="image" class="img-circle" src="{{img.image}}" />
+              </span>
+              <a data-toggle="dropdown" class="dropdown-toggle" href="/#">
+              <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{name.username}}</strong>
+              </span> <span class="text-muted text-xs block">{{degree.doctor_fields.doctor_qualification.[0].course_name}},{{degree.doctor_fields.doctor_qualification.[1].course_name}} <b class="caret"></b></span> </span> </a>
+              <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                <li><a href="{{pathFor 'profile'}}">Profile</a></li>
+                <li><a href="{{pathFor 'contacts'}}">Contacts</a></li>
+                <li><a href="{{pathFor 'mailbox'}}">Mailbox</a></li>
+                <li class="divider"></li>
+                <li><a href="{{pathFor 'login'}}">Logout</a></li>
+              </ul>
+            </div>
+            <div class="logo-element">
+              M+
+            </div>
+          </li>
+          <li class="active" >
+            <a href="{{pathFor 'index'}}#"><i class="fa fa-th-large"></i> <span class="nav-label">Home</span> </a>
+          </li>
+          <li>
+            <a href="{{pathFor 'index'}}#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Appointment</span><span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+				<li><a href="{{pathFor 'appointment_wizard'}}">Appointment Wizard</a></li>
+				<!--{{#each c_layout_facility_list}}
+					{{>layout_facility_list}}
+				{{/each}}
+				-->
+			</ul>
+            
+          </li>
+          <li>
+            <a href="{{pathFor 'index'}}#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Statistics</span><span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li><a href="{{pathFor 'graph_flot'}}">Flot Charts</a></li>
+              <li><a href="{{pathFor 'graph_morris'}}">Morris.js Charts</a></li>
+              <li><a href="{{pathFor 'graph_rickshaw'}}">Rickshaw Charts</a></li>
+              <li><a href="{{pathFor 'graph_peity'}}">Peity Charts</a></li>
+              <li><a href="{{pathFor 'graph_sparkline'}}">Sparkline Charts</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="{{pathFor 'index'}}#"><i class="fa fa-edit"></i> <span class="nav-label">History</span><span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li><a href="{{pathFor 'form_basic'}}">Basic form</a></li>
+              <li><a href="{{pathFor 'form_advanced'}}">Advanced Plugins</a></li>
+              <li><a href="{{pathFor 'form_wizard'}}">Wizard</a></li>
+              <li><a href="{{pathFor 'form_file_upload'}}">File Upload</a></li>
+              <li><a href="{{pathFor 'form_editors'}}">Text Editor</a></li>
+            </ul>
+          </li>
+          <li >
+            <a href="{{pathFor 'index'}}#"><i class="fa fa-flask"></i> <span class="nav-label">Events</span><span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li><a href="{{pathFor 'typography'}}">Typography</a></li>
+              <li><a href="{{pathFor 'icons'}}">Icons</a></li>
+              <li><a href="{{pathFor 'draggable_panels'}}">Draggable Panels</a></li>
+              <li><a href="{{pathFor 'buttons'}}">Buttons</a></li>
+              <li><a href="{{pathFor 'tabs_panels'}}">Tabs & Panels</a></li>
+              <li><a href="{{pathFor 'notifications'}}">Notifications & Tooltips</a></li>
+              <li><a href="{{pathFor 'badges_labels'}}">Badges, Labels, Progress</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="{{pathFor 'index'}}#"><i class="fa fa-laptop"></i> <span class="nav-label">Guess Tools</span><span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li><a href="{{pathFor 'grid_options'}}">Grid options</a></li>
+              <li><a href="{{pathFor 'boxed_layout'}}">Boxed layout</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="{{pathFor 'mailbox'}}"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right">16/24</span></a>
+            <ul class="nav nav-second-level">
+              <li><a href="{{pathFor 'mailbox'}}">Inbox</a></li>
+              <li><a href="{{pathFor 'mail_detail'}}">Email view</a></li>
+              <li><a href="{{pathFor 'mail_compose'}}">Compose email</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="{{pathFor 'index'}}#"><i class="fa fa-desktop"></i> <span class="nav-label">App Views</span>  <span class="pull-right label label-primary">SPECIAL</span></a>
+            <ul class="nav nav-second-level">
+              <li><a href="{{pathFor 'contacts'}}">Contacts</a></li>
+              <li><a href="{{pathFor 'profile'}}">Profile</a></li>
+              <li><a href="{{pathFor 'file_manager'}}">File manager</a></li>
+              <li><a href="{{pathFor 'calendar'}}">Calendar</a></li>
+              <li><a href="{{pathFor 'timeline'}}">Timeline</a></li>
+              <li><a href="{{pathFor 'pin_board'}}">Pin board</a></li>
+              <li><a href="{{pathFor 'invoice'}}">Invoice</a></li>
+              <li><a href="{{pathFor 'login'}}">Login</a></li>
+              <li><a href="{{pathFor 'register'}}">Register</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="{{pathFor 'index'}}#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span><span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li><a href="{{pathFor 'search_results'}}">Search results</a></li>
+              <li><a href="{{pathFor 'lockscreen'}}">Lockscreen</a></li>
+              <li><a href="{{pathFor 'fourzerofour'}}">404 Page</a></li>
+              <li><a href="{{pathFor 'fivezerozero'}}">500 Page</a></li>
+              <li><a href="{{pathFor 'empty_page'}}">Empty page</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="{{pathFor 'index'}}#"><i class="fa fa-table"></i> <span class="nav-label">Tables</span><span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li><a href="{{pathFor 'table_basic'}}">Static Tables</a></li>
+              <li><a href="{{pathFor 'table_data_tables'}}">Data Tables</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="{{pathFor 'index'}}#"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li><a href="{{pathFor 'basic_gallery'}}">Basic Gallery</a></li>
+              <li><a href="{{pathFor 'carousel'}}">Bootstrap Carusela</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="{{pathFor 'index'}}#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li>
+                <a href="/#">Third Level <span class="fa arrow"></span></a>
+                <ul class="nav nav-third-level">
+                  <li>
+                    <a href="/#">Third Level Item</a>
+                  </li>
+                  <li>
+                    <a href="/#">Third Level Item</a>
+                  </li>
+                  <li>
+                    <a href="/#">Third Level Item</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/#">Second Level Item</a></li>
+              <li>
+                <a href="/#">Second Level Item</a>
+              </li>
+              <li>
+                <a href="/#">Second Level Item</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="{{pathFor 'css_animations'}}"><i class="fa fa-magic"></i> <span class="nav-label">CSS Animations </span><span class="label label-info pull-right">62</span></a>
+          </li>
+      
+        </ul>
+      </div>
+    </nav>
+    <div id="page-wrapper" class="gray-bg">
+      <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+              <div class="form-group">
+                <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+              </div>
+            </form>
+          </div>
+          <ul class="nav navbar-top-links navbar-right">
+            <li class="breadcrumb gray-bg">
+              <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle count-info" data-toggle="dropdown" href="/#">
+              <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+              </a>
+              <ul class="dropdown-menu dropdown-messages">
+                <li>
+                  <div class="dropdown-messages-box">
+                    <a href="profile.html" class="pull-left">
+                    <img alt="image" class="img-circle" src="img/a7.jpg">
+                    </a>
+                    <div class="media-body">
+                      <small class="pull-right">46h ago</small>
+                      <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                      <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                    </div>
+                  </div>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <div class="dropdown-messages-box">
+                    <a href="profile.html" class="pull-left">
+                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                    </a>
+                    <div class="media-body ">
+                      <small class="pull-right text-navy">5h ago</small>
+                      <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                      <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                    </div>
+                  </div>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <div class="dropdown-messages-box">
+                    <a href="profile.html" class="pull-left">
+                    <img alt="image" class="img-circle" src="img/profile.jpg">
+                    </a>
+                    <div class="media-body ">
+                      <small class="pull-right">23h ago</small>
+                      <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                      <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                    </div>
+                  </div>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <div class="text-center link-block">
+                    <a href="mailbox.html">
+                    <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle count-info" data-toggle="dropdown" href="/#">
+              <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+              </a>
+              <ul class="dropdown-menu dropdown-alerts">
+                <li>
+                  <a href="mailbox.html">
+                    <div>
+                      <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                      <span class="pull-right text-muted small">4 minutes ago</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="profile.html">
+                    <div>
+                      <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                      <span class="pull-right text-muted small">12 minutes ago</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="grid_options.html">
+                    <div>
+                      <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                      <span class="pull-right text-muted small">4 minutes ago</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <div class="text-center link-block">
+                    <a href="notifications.html">
+                    <strong>See All Alerts</strong>
+                    <i class="fa fa-angle-right"></i>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="login.html">
+              <i class="fa fa-sign-out"></i> <!--{{> loginButtons}}-->
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="row wrapper border-bottom white-bg page-heading">
+        <br>
+        <div class="col-lg-12 col-sm-0">
+          <div class="row">
+			 <div class="col-lg-3">
+				<ul class="breadcrumb">
+				  <li>
+					<a href="index.html">Home</a>
+				  </li>
+				  <li>
+					App Views
+				  </li>
+				</ul>
+			</div>
+            <div class="col-lg-8 col-lg-offset-1">
+				<div class="pull-right">
+				  <a class="btn btn-success btn-bitbucket" href="{{pathFor 'flipster'}}"><i class="fa fa-plus-square-o"></i></a>
+				  <a class="btn btn-white btn-bitbucket" href="{{pathFor 'index'}}"><i class="fa fa-check"></i>&nbsp;Home</a>
+				  <a class="btn btn-white btn-bitbucket" href="{{pathFor 'file_manager'}}"><i class="fa fa-upload"></i>&nbsp;&nbsp;<span class="bold">Documents</span></a>
+				  <a class="btn btn-white btn-bitbucket" href="{{pathFor 'mailbox'}}"><i class="fa fa-paste"></i> Mail</a>
+				  <a class="btn btn-white btn-facebook btn-outline" href="{{pathFor 'appointment_wizard'}}">
+				  <i class="fa fa-facebook"> </i> Wizard
+				  </a>
+				  <a class="btn btn-white btn-bitbucket" href="{{pathFor 'contacts'}}">
+				  <i class="fa fa-group"></i>
+				  </a>
+				  <a class="btn btn-white btn-bitbucket">
+				  <i class="fa fa-wrench"></i>
+				  </a>
+				  <a class="btn btn-white btn-bitbucket">
+				  <i class="fa fa-road"></i>
+				  </a>
+				  <a class="btn btn-danger btn-bitbucket btn-outline">
+				  <i class="fa fa-ambulance"></i>
+				  </a>
+				  <a class="btn btn-warning btn-bitbucket">
+				  <i class="fa fa-star"></i> 
+				  </a>
+              </div>
+            </div>
+          </div>  
+        </div>
+      </div>
+      {{> yield}}
+    </div>
+  </div>
+</template>
