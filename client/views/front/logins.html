@@ -12,16 +12,20 @@
 			<a class="navbar-brand" href="#">M+</a>
 		</div>
 		<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-			<div class=" col-lg-offset-2">
-				{{#autoForm class="form-inline well" collection="Doctor" id="dsearch_login_form" type="method" meteormethod="doctorfind" }}
+			<div class="row well">
+			  <div class="col-lg-2 col-lg-offset-2">.{{>symptom}}</div>
+			  <div class=" col-lg-6">
+				{{#autoForm class="form-inline " collection="Doctor" id="dsearch_login_form" type="method" meteormethod="doctorfind" }}
 					<fieldset>
-						{{> afFieldInput name='username' placeholder="Symptom"}}
+						
 						{{> afFieldInput name='password' placeholder="Place"}}
 						{{> afFieldInput name='password' placeholder="Password" type="date"}}
 						<button type="submit" class="btn btn-primary">Enquire</button>
 					</fieldset>
-				{{/autoForm}}
+				{{/autoForm}}			  
+			  </div>
 			</div>
+
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 	</nav>
@@ -48,66 +52,19 @@
 				<div class="panel-options">
 				<ul class="nav nav-justified">
 					<li class="active"><a data-toggle="tab" href="#tabpatinet"><i class="fa fa-user-md fa-2x"></i>Physician</a></li>
-					<li class=""><a data-toggle="tab" href="#tabdoctor"><i class="fa fa-wheelchair fa-2x"></i>Patient</a></li>
+					
+					<li class=""><a data-toggle="tab" href="#tabadmin"><i class="fa fa-wheelchair fa-2x"></i>Patient</a></li>
 				</ul>
 				</div>
 			</div>
 			<div class="panel-body">
 				<div class="tab-content">
 					<div id="tabpatinet" class="tab-pane active well">
-						<ul>
-							<li>
-							{{#autoForm collection="Doctor" id="dlogin_form" type="method" meteormethod="doctorlogin" }}
-								<fieldset>
-									<legend>Physician Login</legend>
-									{{> afFieldInput name='username' placeholder="Name"}}
-									{{> afFieldInput name='password' placeholder="Password" type="password"}}
-									<button type="submit" class="btn btn-primary btn-block">Log in</button>
-								</fieldset>
-							{{/autoForm}}
-							</li>
-							<li class="divider">
-							</li>
-							<li>
-							{{#autoForm collection="Doctor" id="dregister_form" type="insert" }} 
-								<fieldset>
-									{{> afFieldInput name='username' placeholder="Name"}}
-									{{> afFieldInput name='password' placeholder="Password" type="password"}}
-									{{> afFieldInput name='patient_id' placeholder="ROSE"}}
-									{{> afFieldInput name='blood_group' placeholder="MARY"}}
-									{{> afFieldInput name='city' placeholder="MARLOW"}}
-									<button type="submit" class="btn btn-primary btn-block">Register</button>
-								</fieldset>
-							{{/autoForm}}
-							</li>
-						</ul>
+					{{>dlogin}}
 					</div>
-					<div id="tabdoctor" class="tab-pane well">
-						<ul>
-							<li>
-							{{#autoForm collection="Patient" id="plogin_form" type="method" meteormethod="patientlogin" }}
-								<fieldset>
-									<legend>Patient Login</legend>
-									{{> afFieldInput name='username' placeholder="Name"}}
-									{{> afFieldInput name='city'  placeholder="Password" type="password"}}
-									<button type="submit" class="btn btn-primary btn-block">Log in</button>
-								</fieldset>
-							{{/autoForm}}
-							</li>
-							<li class="divider"></li>
-							<li>
-							{{#autoForm collection="Patient" id="pregister_form" type="insert" }} 
-								<fieldset>
-									{{> afFieldInput name='username' placeholder="Name"}}
-									{{> afFieldInput name='gender' placeholder="ROSE"}}
-									{{> afFieldInput name='blood_group' placeholder="MARY"}}
-									{{> afFieldInput name='city' placeholder="MARLOW"}}
-									<button type="submit" class="btn btn-primary btn-block">Register</button>
-								</fieldset>
-							{{/autoForm}}
-							</li>
-						</ul>
-					</div>
+					<div id="tabadmin" class="tab-pane well">
+						{{>plogin}}
+						</div>
 					</div>
 			</div>
 		</div>

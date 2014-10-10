@@ -39,7 +39,11 @@ emails : {
 	optional : true
 	
      }, 
-
+password : {
+	        type : String,
+        label : " Password " , 
+	max : 100,
+	},
 'emails.$.address ' : { 
       type : String,
 optional : true
@@ -157,7 +161,7 @@ username : {
 password : {
 	        type : String,
         label : " Password " , 
-	max : 50,
+	max : 100,
 	},
 contactnos : {
         type : [Number],
