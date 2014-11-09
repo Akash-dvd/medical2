@@ -1,11 +1,12 @@
 Template.logins.rendered = function ( ) { 
+	$("video").prop('muted', true); 
 	$("video").hover(
 	function(e) {
 		e.preventDefault();
 		$("video").prop('muted', false); 
 		$(".video-hover").css({ opacity: 1.0 });
 		$(".image-hover").css({ opacity: 0.0 });
-	}, 
+	},
 	function(e) {
 		e.preventDefault();
 		$("video").prop('muted', true); 

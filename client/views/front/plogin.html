@@ -14,7 +14,7 @@
                             {{#autoForm collection="Patient" id="plogin_form" type="method" meteormethod="patientlogin" }}
 								<fieldset>
 									<legend>Patient Login</legend>
-									{{> afFieldInput name='username' placeholder="Name"}}
+									{{> afFieldInput name='username' placeholder="Email"}}
 									{{> afFieldInput name='password'  placeholder="Password" type="password"}}
 									<button type="submit" class="btn btn-primary btn-block">Log in</button>
 								</fieldset>
@@ -24,7 +24,7 @@
 						{{#autoForm collection="Patient" id="pregister_form" type="method" meteormethod="patientregister" }} 
 								<fieldset>
 									<legend>Register</legend>
-									{{> afFieldInput name='username' placeholder="Name"}}
+									{{> afFieldInput name='username' placeholder="Email"}}
 									{{> afFieldInput name='password' placeholder="Password" type="password"}}
 									{{> afFieldInput name='gender' placeholder="gender"}}
 									{{> afFieldInput name='blood_group' placeholder="Blood Group"}}
@@ -38,9 +38,9 @@
                             {{#autoForm collection="Patient" id="patientpasswordreset_form" type="method" meteormethod="patientpasswordreset" }}
 								<fieldset>
 									<legend>Password Reset</legend>
-									{{> afFieldInput name='username' placeholder="Name"}}
-									{{> afFieldInput name='password' placeholder="Password" type="password"}}
-									{{> afFieldInput name='password' placeholder="Password Again" type="password"}}
+								{{> afFieldInput name='username' placeholder="Email"}}
+								{{> afFieldInput name='password' placeholder="Old Password" type="password"}}
+								{{> afFieldInput name='password' placeholder="New Password" type="password"}}
 									<button type="submit" class="btn btn-primary btn-block">Reset</button>
 								</fieldset>
 							{{/autoForm}}     

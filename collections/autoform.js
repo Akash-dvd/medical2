@@ -33,31 +33,60 @@ _id : {
         label : " Doctor ID " ,
         optional : true
      }, 
-emails : {
-        type : [Object],
-        label : " Email ID ",  
-	optional : true
-	
-     }, 
 password : {
 	        type : String,
         label : " Password " , 
 	max : 100,
 	},
-'emails.$.address ' : { 
-      type : String,
-optional : true
-	},
-
-'emails.$.verified ' : { 
-      type : String,
-	optional : true
-	},
+"emails.$": {
+	type: Object,
+	optional: true,
+	blackbox: true
+},
+"emails.$.verified" : {
+	type: Boolean,
+	optional: true
+},
+"emails.$.address" : {
+	type: SimpleSchema.RegEx.Email,
+	optional: true
+},
 services: {
         type: Object,
         optional: true,
         blackbox: true
     },
+"services.email.verificationTokens.$" : {
+	    type: Object,
+        optional: true,
+        blackbox: true
+},
+"services.email.verificationTokens.$.token" : {
+	    type: String,
+        optional: true,
+        blackbox: true
+},
+"services.email.verificationTokens.$.address" : {
+	    type: Object,
+        optional: true,
+        blackbox: true
+},
+"services.email.verificationTokens.$.when" : {
+	    type: Object,
+        optional: true,
+        blackbox: true
+},
+"services.password.bcrypt" : {
+	    type: String,
+        optional: true,
+        max : 150,
+        blackbox: true
+},
+client_container : {
+        type : String,
+	max : 200 , 
+	optional : true
+     }, 
 username : {
         type : String,
         label : " Name " , 
@@ -132,36 +161,61 @@ _id : {
         label : " Doctor ID " ,
         optional : true
      }, 
-emails : {
-        type : [Object],
-        label : " Email ID ",  
-	optional : true
-	
-     }, 
-
-'emails.$.address ' : { 
-      type : String,
-optional : true
-	},
-
-'emails.$.verified ' : { 
-      type : String,
-	optional : true
-	},
+"emails.$": {
+	type: Object,
+	optional: true,
+	blackbox: true
+},
+"emails.$.verified" : {
+	type: Boolean,
+	optional: true
+},
+"emails.$.address" : {
+	type: SimpleSchema.RegEx.Email,
+	optional: true
+},
 services: {
         type: Object,
         optional: true,
         blackbox: true
     },
+"services.email.verificationTokens.$" : {
+	    type: Object,
+        optional: true,
+        blackbox: true
+},
+"services.email.verificationTokens.$.token" : {
+	    type: String,
+        optional: true,
+        blackbox: true
+},
+"services.email.verificationTokens.$.address" : {
+	    type: Object,
+        optional: true,
+        blackbox: true
+},
+"services.email.verificationTokens.$.when" : {
+	    type: Object,
+        optional: true,
+        blackbox: true
+},
+"services.password.bcrypt" : {
+	    type: String,
+        optional: true,
+        max : 150,
+        blackbox: true
+},
 username : {
         type : String,
         label : " Email " , 
 	max : 50,
+	optional : true
      }, 
 password : {
 	        type : String,
         label : " Password " , 
 	max : 100,
+	optional : true
 	},
 contactnos : {
         type : [Number],
@@ -198,6 +252,12 @@ city : {
 	max : 20 , 
 	optional : true
      }, 
+client_container : {
+        type : String,
+	max : 200 , 
+	optional : true
+     }, 
+
 
 address : {
       	type : Object,

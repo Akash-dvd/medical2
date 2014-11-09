@@ -11,30 +11,81 @@ Reminders = new Meteor.Collection('reminders');
 //Doctor = new Meteor.Collection('doctor');
 //Workplace = new Meteor.Collection('workplace');
 Wk_Desc = new Meteor.Collection('wk_desc');
+Random= Package['random'].Random;
+Email = Package['email'].Email;
+bcrypt = Npm.require('bcrypt');
+Dlogin={};
+Dlogin.urls={};
 
+Dlogin.urls.resetPassword = function (token) {
+  return Meteor.absoluteUrl('reset_password/' + token);
+};
+Dlogin.emailTemplates = {
+  from: "Meteor Dlogin <no-reply@medicalplus.com>",
+  siteName: Meteor.absoluteUrl().replace(/^https?:\/\//, '').replace(/\/$/, ''),
 
-var getPasswordString = function (password) {
-  if (typeof password === "string") {
-    password = SHA256(password);
-  } else { // 'password' is an object
-    if (password.algorithm !== "sha-256") {
-      throw new Error("Invalid password hash algorithm. " +
-                      "Only 'sha-256' is allowed.");
+  resetPassword: {
+    subject: function(user) {
+      return "How to reset your password on " + Dlogin.emailTemplates.siteName;
+    },
+    text: function(user, url) {
+      var greeting = (user.profile && user.profile.name) ?
+            ("Hello " + user.emails[0].address + ",") : "Hello,";
+      return greeting + "\n"
+        + "\n"
+        + "To reset your password, simply click the link below.\n"
+        + "\n"
+        + url + "\n"
+        + "\n"
+        + "Thanks.\n";
     }
-    password = password.digest;
+  },
+  verifyEmail: {
+    subject: function(user) {
+      return "How to verify email address on " + Dlogin.emailTemplates.siteName;
+    },
+    text: function(user, url) {
+      var greeting = (user.profile && user.profile.name) ?
+            ("Hello " + user.emails[0].address + ",") : "Hello,";
+      return greeting + "\n"
+        + "\n"
+        + "To verify your account email, simply click the link below.\n"
+        + "\n"
+        + url + "\n"
+        + "\n"
+        + "Thanks.\n";
+    }
+  },
+  enrollAccount: {
+    subject: function(user) {
+      return "An account has been created for you on " + Dlogin.emailTemplates.siteName;
+    },
+    text: function(user, url) {
+      var greeting = (user.profile && user.profile.name) ?
+            ("Hello " + user.emails[0].address + ",") : "Hello,";
+      return greeting + "\n"
+        + "\n"
+        + "To start using the service, simply click the link below.\n"
+        + "\n"
+        + url + "\n"
+        + "\n"
+        + "Thanks.\n";
+    }
   }
-  return password;
 };
 
+ 
 
 Meteor.methods({
 	patientlogin: function(postAttributes) {
 		console.log(postAttributes);
-		user = Patient.findOne({"username": postAttributes.username});
-		var bcrypt = Npm.require('bcrypt');
+		//user = Patient.findOne({"username": postAttributes.username});
+		//Work around coz email array in autoform does not work
+		user = Patient.findOne({"emails.address": postAttributes.username});
+		
 		if (!!user) {
 			if (!bcrypt.compareSync(postAttributes.password,user.password))	{
-				console.log("Patient password is wrong" + bcrypt.compareSync(postAttributes.password,user.password));
+				console.log(postAttributes.username +"Patient password is " + bcrypt.compareSync(postAttributes.password,user.password));
 				throw new Meteor.Error(401, "wrong password");
 			}
 			return user; 
@@ -47,30 +98,43 @@ Meteor.methods({
 	/////// Try Doing it in async way
 	patientregister: function(postAttributes) {
 		console.log(postAttributes);
-		user =  Patient.findOne({"username": postAttributes.username});
-		var bcrypt = Npm.require('bcrypt');
+		//user = Patient.findOne({"username": postAttributes.username});
+		//Work around coz email array in autoform does not work
+		user =  Patient.findOne({"emails.address": postAttributes.username});
 		if (!user) {
 			var salt = bcrypt.genSaltSync(10);
-			var hash = bcrypt.hashSync(postAttributes.password, salt);
+			var hash = bcrypt.hashSync(postAttributes.username, salt);
 			postAttributes.password = hash;
+			//Work around coz email array in autoform does not work
+			email = {emails :[{address : postAttributes.username,verified : "false"}]};
+			_.extend(postAttributes, email);
+			postAttributes.username = null;
 			console.log(postAttributes);
 			Patient.insert(postAttributes);
 		}
 		else {
-			console.log(user+ "already exists");
+			console.log(postAttributes.username+ "patient already exists");
 			throw new Meteor.Error("PAT-EXISTS", postAttributes);
 		} 
 	},
 	patientpasswordreset : function(postAttributes) {
 		console.log(postAttributes);
-		user =  Patient.findOne({"username": postAttributes.username});
-		var bcrypt = Npm.require('bcrypt');
+		//user = Doctor.findOne({"username": postAttributes.username});
+		//Work around coz email array in autoform does not work
+		user = Patient.findOne({"emails.address": postAttributes.username});
+		var salt = bcrypt.genSaltSync(10);
 		if (!!user) {
-			var salt = bcrypt.genSaltSync(10);
-			var hash = bcrypt.hashSync(postAttributes.password, salt);
-			postAttributes.password = hash;
-			console.log(postAttributes);
-			Patient.update({_id: user._id},{$set :{password:hash}});
+			ser_old_hash_password = user.password;
+			cli_old_hash_password = bcrypt.hashSync(postAttributes.opassword, salt)
+			cli_new_hash_password = bcrypt.hashSync(postAttributes.npassword, salt)
+			if (ser_old_hash_password === cli_old_hash_password) {
+				console.log(postAttributes);
+				Patient.update({_id: user._id},{$set :{password:cli_new_hash_password}});
+			}
+			else {
+				console.log("Wrong Password supplied");
+				throw new Meteor.Error("PAT-Wrong Password", postAttributes);
+			}
 		}
 		else {
 			console.log(user+ "not found");
@@ -79,11 +143,15 @@ Meteor.methods({
 	},
 	doctorlogin: function(postAttributes) {
 		console.log(postAttributes);
-		user = Doctor.findOne({"username": postAttributes.username});
-		var bcrypt = Npm.require('bcrypt');
+		//user = Doctor.findOne({"username": postAttributes.username});
+		//Work around coz email array in autoform does not work
+		user = Doctor.findOne({"emails.address": postAttributes.username});
 		if (!!user) {
-			if (!bcrypt.compareSync(postAttributes.password,user.password))	{
-				console.log("doctor password is wrong" + bcrypt.compareSync(postAttributes.password,user.password));
+			if (!bcrypt.compareSync(postAttributes.password,user.services.password.bcrypt))	{
+				//console.log(postAttributes.username +" doctor password is " + bcrypt.compareSync(postAttributes.password,user.password));
+				//console.log(salt + " salt");
+				console.log(postAttributes.password + " postAttributes.password");
+				console.log(user.password +  " user.password");
 				throw new Meteor.Error(401, "wrong password");
 			}
 			return user; 
@@ -95,34 +163,119 @@ Meteor.methods({
 	},
 	doctorregister: function(postAttributes) {
 		console.log(postAttributes);
-		user = Doctor.findOne({"username": postAttributes.username});
-		var bcrypt = Npm.require('bcrypt');
+		//user = Doctor.findOne({"username": postAttributes.username});
+		//Work around coz email array in autoform does not work
+		user = Doctor.findOne({"emails.address": postAttributes.username});
+		//var bcrypt = Npm.require('bcrypt');
 		if (!user) {
 			var salt = bcrypt.genSaltSync(10);
-			var hash = bcrypt.hashSync(postAttributes.username, salt);
-			postAttributes.password = hash;
+			var hash = bcrypt.hashSync(postAttributes.password, salt);
+			postAttributes.password = null;
+			//Work around coz email array in autoform does not work
+			email = {emails :[{address : postAttributes.username,verified : "false"}]};
+			_.extend(postAttributes, email);
+			//services={};services.password={};services.password.bcrypt={};
+			services ={"services" :{"password" :{"bcrypt" :""}}};
+			services.services.password.bcrypt=hash;
+			_.extend(postAttributes, services);
+			postAttributes.username = null;
 			console.log(postAttributes);
 			Doctor.insert(postAttributes);
 		}
 		else {
-			console.log(user+ "already exists");
+			console.log(postAttributes.username + "doctor already exists");
 			throw new Meteor.Error("DOC-EXISTS", postAttributes);
 		}  
+		
+		console.log(bcrypt.compareSync("1",hash) + " passwd check"  );
 	},
 	doctorpasswordreset : function(postAttributes) {
 		console.log(postAttributes);
-		user =  Doctor.findOne({"username": postAttributes.username});
-		var bcrypt = Npm.require('bcrypt');
+		//user = Doctor.findOne({"username": postAttributes.username});
+		//Work around coz email array in autoform does not work
+		user = Doctor.findOne({"emails.address": postAttributes.username});
+		var salt = bcrypt.genSaltSync(10);
 		if (!!user) {
-			var salt = bcrypt.genSaltSync(10);
-			var hash = bcrypt.hashSync(postAttributes.password, salt);
-			postAttributes.password = hash;
-			console.log(postAttributes);
-			Doctor.update({_id: user._id},{$set :{password:hash}});
+			//Work around coz email array in autoform does not work
+			//Dlogin.sendResetPasswordEmail(user._id, postAttributes.username);
+			
+			address = postAttributes.username;
+			//check for verification
+			/*
+			var email = _.find(user.emails || [],
+				function (e) { return !e.verified; });
+				address = (email || {}).address;
+			
+		  // make sure we have a valid address
+			if (!address || !_.contains(_.pluck(user.emails || [], 'address'), address))
+			throw new Error("No such email address for user.");
+			*/
+			var userId = user._id;
+			var tokenRecord = {	
+				token: Random.secret(),
+				address: address,
+				when: new Date()};
+			Doctor.update(
+			{_id: userId},
+			{$push: {'services.email.verificationTokens': tokenRecord}});
+			//replace with token
+			var resetPasswordUrl = Dlogin.urls.resetPassword(tokenRecord.token);
+
+			var options = {
+			to: postAttributes.username,
+			from: Dlogin.emailTemplates.from,
+			subject: Dlogin.emailTemplates.resetPassword.subject(user),
+			text: Dlogin.emailTemplates.resetPassword.text(user, resetPasswordUrl)
+			};
+
+			if (typeof Dlogin.emailTemplates.resetPassword.html === 'function')
+			options.html =
+			Dlogin.emailTemplates.resetPassword.html(user, resetPasswordUrl);
+
+			Email.send(options);
+			
+			
+			
+			
+			/*
+			ser_old_hash_password = user.password;
+			cli_old_hash_password = bcrypt.hashSync(postAttributes.opassword, salt)
+			cli_new_hash_password = bcrypt.hashSync(postAttributes.npassword, salt)
+			if (ser_old_hash_password === cli_old_hash_password) {
+				console.log(postAttributes);
+				Doctor.update({_id: user._id},{$set :{password:cli_new_hash_password}});
+			}
+			else {
+				console.log("Wrong Password supplied");
+				throw new Meteor.Error("DOC-Wrong Password", postAttributes);
+			}
+			*/ 
 		}
 		else {
 			console.log(user+ "not found");
 			throw new Meteor.Error("DOC-EXISTS", postAttributes);
+		} 
+	},
+	doctorpasswordreset_email : function(postAttributes) {
+		console.log(postAttributes);
+		user = Doctor.findOne({"emails.address": postAttributes.username});
+		//check for token
+		var salt = bcrypt.genSaltSync(10);
+		if (!!user) {
+			// add time check also and token array number
+			if (_.contains(_.pluck(user.services.email.verificationTokens,"token"),postAttributes.client_container)) {
+			
+			cli_new_hash_password = bcrypt.hashSync(postAttributes.password, salt);
+			Doctor.update({_id: user._id},{$set :{"services.password.bcrypt":cli_new_hash_password}});
+			}
+			else {
+				console.log("Invalid Token");
+				throw new Meteor.Error("Invalid link", postAttributes);
+			}
+		}
+		else {
+			console.log(user+ "not found");
+			throw new Meteor.Error("Invalid link", postAttributes);
 		} 
 	},
 	appointmentconfimation: function(postAttributes) {
@@ -145,5 +298,3 @@ Meteor.methods({
 		}
 	},
 });
-
-
