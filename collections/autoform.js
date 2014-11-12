@@ -36,6 +36,7 @@ _id : {
 password : {
 	        type : String,
         label : " Password " , 
+         optional : true,
 	max : 100,
 	},
 "emails.$": {

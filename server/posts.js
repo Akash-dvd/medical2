@@ -84,7 +84,7 @@ Meteor.methods({
 		user = Patient.findOne({"emails.address": postAttributes.username});
 		
 		if (!!user) {
-			if (!bcrypt.compareSync(postAttributes.password,user.password))	{
+			if (!bcrypt.compareSync(postAttributes.password,user.services.password.bcrypt))	{
 				console.log(postAttributes.username +"Patient password is " + bcrypt.compareSync(postAttributes.password,user.password));
 				throw new Meteor.Error(401, "wrong password");
 			}
@@ -98,24 +98,31 @@ Meteor.methods({
 	/////// Try Doing it in async way
 	patientregister: function(postAttributes) {
 		console.log(postAttributes);
-		//user = Patient.findOne({"username": postAttributes.username});
+		//user = Doctor.findOne({"username": postAttributes.username});
 		//Work around coz email array in autoform does not work
-		user =  Patient.findOne({"emails.address": postAttributes.username});
+		user = Patient.findOne({"emails.address": postAttributes.username});
+		//var bcrypt = Npm.require('bcrypt');
 		if (!user) {
 			var salt = bcrypt.genSaltSync(10);
-			var hash = bcrypt.hashSync(postAttributes.username, salt);
-			postAttributes.password = hash;
+			var hash = bcrypt.hashSync(postAttributes.password, salt);
+			postAttributes.password = null;
 			//Work around coz email array in autoform does not work
 			email = {emails :[{address : postAttributes.username,verified : "false"}]};
 			_.extend(postAttributes, email);
+			//services={};services.password={};services.password.bcrypt={};
+			services ={"services" :{"password" :{"bcrypt" :""}}};
+			services.services.password.bcrypt=hash;
+			_.extend(postAttributes, services);
 			postAttributes.username = null;
 			console.log(postAttributes);
 			Patient.insert(postAttributes);
 		}
 		else {
-			console.log(postAttributes.username+ "patient already exists");
+			console.log(postAttributes.username + "patient already exists");
 			throw new Meteor.Error("PAT-EXISTS", postAttributes);
-		} 
+		}  
+		
+		console.log(bcrypt.compareSync("1",hash) + " passwd check"  );
 	},
 	patientpasswordreset : function(postAttributes) {
 		console.log(postAttributes);
