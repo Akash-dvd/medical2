@@ -23,9 +23,9 @@
 							<fieldset>
 								<legend>Register</legend>
 								{{> afFieldInput name='username' placeholder="Email"}}
-								{{> afFieldInput name='password' placeholder="Password" type="password"}}
+								{{> afFieldInput name='password' placeholder="Password" type="password" options="allowed"}}
 								{{> afFieldInput name='dob' placeholder="Date Of Birth"}}
-								{{> afFieldInput name='blood_group' placeholder="BLOOD GROUP"}}
+								{{> afFieldInput name="blood_group" placeholder="BLOOD GROUP" options="allowed"}}
 								{{> afFieldInput name='city' placeholder="CITY"}}
 								<button type="submit" class="btn btn-primary btn-block">Register</button>
 							</fieldset>
