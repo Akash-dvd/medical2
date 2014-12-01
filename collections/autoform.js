@@ -147,7 +147,11 @@ address : {
 is_critical : {
 	type:Boolean,
 	optional:true,
-       }
+       },
+image : {
+	type:String,
+	optional:true,
+}
 }});
 
 

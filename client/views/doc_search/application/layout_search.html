@@ -18,7 +18,12 @@
 						<div class="logo-element">M+</div>
 					</li>
 					<li class="active" >
-						<a href="{{pathFor 'layout_search'}}#"><i class="fa fa-th-large"></i> <span class="nav-label">Filters</span> </a>
+						<a href="{{pathFor 'dsearch'}}#"><i class="fa fa-th-large"></i> <span class="nav-label">Filters</span> </a>
+					<!--<a href="{{pathFor 'layout_search'}}#"><i class="fa fa-cog"></i> <span class="nav-label">{{>Settings}}</span><span class="fa arrow"></span></a> -->
+					</li>
+					<li >
+						<a href="{{pathFor 'patient_settings'}}#"><i class="fa fa-cog"></i> <span class="nav-label">Settings</span> </a>
+					<!--<a href="{{pathFor 'layout_search'}}#"><i class="fa fa-cog"></i> <span class="nav-label">{{>Settings}}</span><span class="fa arrow"></span></a> -->
 					</li>
 					<li>
 						<a href="{{pathFor 'layout_search'}}#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Priorities</span><span class="fa arrow"></span></a>
@@ -50,8 +55,8 @@
 							<li><a href="{{pathFor 'form_editors'}}">Text Editor</a></li>
 						</ul>
 					</li>
-				</ul>
-			</div>
+					</ul>
+                   </div>
 		</nav>
 		<div id="page-wrapper" class="gray-bg">
 			<div class="row border-bottom">
