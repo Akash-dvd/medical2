@@ -1,4 +1,4 @@
-Template.patient_settings.helpers ({
+Template.patientsettings.helpers ({
 	pat : function () {
 		return Patient.findOne({_id:Session.get("patient_id")});
 	}
