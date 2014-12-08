@@ -1,0 +1,54 @@
+<template name="AppointmentsList">
+<li>
+	<div class="well">
+		<div class="intimeline-icon">
+			<i class="fa fa-briefcase"></i>
+		</div>
+		<div class="intimeline-time">
+			{{time}}
+			<br/>
+			<small class="text-navy">2 hour ago</small>
+		</div>
+		<div class="intimeline-message">
+			<p>
+				<strong>{{description}}</strong>
+			
+				<button class="btn btn-danger pull-right dim" type="button">
+					<i class="fa  fa-stop"></i>
+				</button>
+				<button class="btn btn-warning pull-right dim" type="button">
+					<i class="fa fa-repeat"></i>
+				</button>
+				<button class="btn btn-primary pull-right dim" type="button">
+					<i class="fa fa-play"></i>
+				</button>
+				<button class="btn btn-success pull-right dim" type="button">
+					<i class="fa fa-check"></i>
+				</button>
+
+			</p>
+			<div class="ibox-content">
+				<table class="table table-striped table-bordered table-hover dataTables-example" >
+					<tbody>
+						<tr class="gradeA">
+							<td><a href=""><div class="name">{{person.username}}</div></a></td>
+							<td>Self</td>
+							<td>{{status}}</td>
+							<td class="center">Third Appointment</td>
+							<td class="center"><button class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg.calendar{{counter_calendar_modal}}"><i class="fa fa-random"></i></button></td>
+						</tr>
+						<div class="modal fade bs-example-modal-lg calendar{{counter_calendar_modal}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content">
+								  ...
+								</div>
+							  </div>
+						</div>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</li>
+
+</template>

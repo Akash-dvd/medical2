@@ -1,0 +1,25 @@
+<template name="Index">
+  <div class="row  border-bottom white-bg dashboard-header">
+    <div class="col-sm-4">
+      {{>IndexNotifications}}
+    </div>
+    <div class="col-lg-8 ">
+      {{>IndexStats}}
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>Schedule</h2>
+        {{>IndexFeeds}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <!--{{>index_extra}}
+      {{>insertBookForm}}-->
+    </div>
+  </div>
+</template>
+<template name="insertBookForm">
+  {{> quickForm collection="Books" id="insertBookForm" type="insert"}}
+</template>

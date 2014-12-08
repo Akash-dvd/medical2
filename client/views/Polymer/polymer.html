@@ -1,0 +1,24 @@
+<template name="polymerdemo">
+
+  <link rel="import"	href="test.html">
+
+      <test-test>
+		<ul>
+			{{#each c_Doc}}
+				{{> card}}
+			{{/each}}
+		</ul>
+	</test-test>
+
+</template>
+
+<template name="card">
+
+<link rel="import" href="post-card.html">
+
+	<post-card>
+		<img src="{{image}}">
+		<h2>{{username}}</h2>
+	</post-card>
+
+</template>

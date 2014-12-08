@@ -1,0 +1,48 @@
+<template name="FormWizard">
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>Basic Wizzard</h5>
+						<div class="ibox-tools">
+							<a class="collapse-link"> <i class="fa fa-chevron-up"></i> </a>
+							<a class="dropdown-toggle" data-toggle="dropdown" href="form_wizard.html#"> <i class="fa fa-wrench"></i> </a>
+							<ul class="dropdown-menu dropdown-user">
+								<li>
+									<a href="form_wizard.html#">Config option 1</a>
+								</li>
+								<li>
+									<a href="form_wizard.html#">Config option 2</a>
+								</li>
+							</ul>
+							<a class="close-link"> <i class="fa fa-times"></i> </a>
+						</div>
+					</div>
+					<div class="ibox-content">
+						<p>
+							This is basic example of Step 
+						</p>
+						<div id="wizard">
+              <h1>Facility Selection</h1>
+							<div class="step-content">
+
+								{{>Workplace}}
+							</div>
+
+							<h1>Appointment List</h1>
+							<div class="step-content">
+								{{>FacilityAll}}
+							</div>
+
+							<h1>Case Study</h1>
+							<div class="step-content">
+								{{>Profile}}
+							</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

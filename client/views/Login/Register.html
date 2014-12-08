@@ -1,0 +1,55 @@
+<template name="Register">
+<div class="gray-bg">
+<div class="col-lg-10 col-lg-offset-2" style="position:absolute;">
+  <video width='80%' autoplay="autoplay" loop>
+    <source src="video/video.mp4" type="video/mp4" />
+  </video>
+</div>
+    <div class="middle-box text-center loginscreen   animated fadeInDown">
+        <div>
+            <div>
+
+                <h1 class="logo-name">M+</h1>
+
+            </div>
+            <h3>Welcome to M+</h3>
+            <p>Perfectly designed and precisely prepared admin application for physicians.
+                <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+            </p>
+				{{#autoForm collection="Doctor" id="register_form" type="insert"}}
+				<fieldset>
+					<legend>Add a Book</legend>
+					{{> afFieldInput name='username' placeholder="Name"}}
+					{{> afFieldInput name='emails.0.address' placeholder="Email"}}
+					{{> afQuickField name='password' placeholder="Password"}}
+				</fieldset>
+				<button type="submit" class="btn btn-primary">Sign in</button>
+				{{/autoForm}} 
+            <!--
+            <form class="m-t" role="form" action="Login.html">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Name" required="">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" required="">
+                </div>
+                <div class="form-group">
+                        <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> Agree the terms and policy </label></div>
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
+
+                <p class="text-muted text-center"><small>Already have an account?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="Login.html">Login</a>
+            </form>-->
+            <p class="text-muted text-center"><small>Already have an account?</small></p>
+            <a class="btn btn-sm btn-white btn-block" href="{{pathFor 'logins'}}">Login</a>
+            <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
+        </div>
+    </div>
+
+
+</div>
+</template>

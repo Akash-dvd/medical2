@@ -1,0 +1,58 @@
+<template name="Plogin">
+	<div class="row-fluid" id="demo-1">
+            <div class=" offset1">
+                
+                <div class="tabbable custom-tabs tabs-animated  flat flat-all hide-label-980 shadow track-url auto-scroll">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#panel4" data-toggle="tab" class="active "><i class="fa fa-unlock"></i>&nbsp;<span></span></a></li>
+                        <li><a href="#panel5" data-toggle="tab"><i class="fa fa-arrow-left"></i>&nbsp;<span></span></a></li>
+                        <li><a href="#panel6" data-toggle="tab"><i class="fa fa-key"></i>&nbsp;<span></span></a></li>
+                       
+                    </ul>
+                    <div class="tab-content ">
+                        <div class="tab-pane active" id="panel4">
+                            {{#autoForm collection="Patient" id="plogin_form" type="method" meteormethod="patientlogin" }}
+								<fieldset>
+									<legend>Patient Login</legend>
+									{{> afFieldInput name='username' placeholder="Email"}}
+									{{> afFieldInput name='password'  placeholder="Password" type="password"}}
+									<button type="submit" class="btn btn-primary btn-block">Log in</button>
+								</fieldset>
+							{{/autoForm}}
+                        </div>
+                        <div class="tab-pane" id="panel5">
+						{{#autoForm collection="Patient" id="pregister_form" type="method" meteormethod="patientregister" }} 
+								<fieldset>
+									<legend>Register</legend>
+									{{> afFieldInput name='username' placeholder="Email"}}
+									{{> afFieldInput name="password" placeholder="Password" type="password"}}
+									{{> afFieldInput name="gender" placeholder="gender" options="allowed"}}
+									{{> afFieldInput name='dob' placeholder="Date Of Birth"}}
+									{{> afFieldInput name="blood_group" placeholder="Blood Group" options="allowed"}}
+									{{> afFieldInput name='city' placeholder="City"}}
+									<button type="submit" class="btn btn-primary btn-block">Register</button>
+								</fieldset>
+							{{/autoForm}}
+							</div>
+
+                        <div class="tab-pane" id="panel6">
+                            {{#autoForm collection="Patient" id="patientpasswordreset_form" type="method" meteormethod="patientpasswordreset" }}
+								<fieldset>
+									<legend>Password Reset</legend>
+								{{> afFieldInput name='username' placeholder="Email"}}
+								{{> afFieldInput name='password' placeholder="Old Password" type="password"}}
+								{{> afFieldInput name='password' placeholder="New Password" type="password"}}
+									<button type="submit" class="btn btn-primary btn-block">Reset</button>
+								</fieldset>
+							{{/autoForm}}     
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="divider bottom-preview"></div>
+        
+
+					</template>

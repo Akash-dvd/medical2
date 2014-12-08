@@ -1,0 +1,30 @@
+<template name="Workplace">
+ <br>
+<h2>&nbsp;&nbsp;Facility Appointment Description</h2>
+  <div class="panel blank-panel">
+    <div class="ibox float-e-margins ">
+       <div class="ibox-content ibox-heading ">
+          <table class="table table-hover">
+              <thead>
+              <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                  <th>Today's Slots</th>
+                  <th>Actions</th>
+                  <th>Reschedule</th>
+              </tr>
+              </thead>
+              <tbody>
+              
+                {{#each c_Workplace}}
+                  {{> WorkplaceList }}
+                {{/each}}
+         
+              </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</template>
