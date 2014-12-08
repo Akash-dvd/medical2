@@ -141,13 +141,17 @@ address : {
 	},
 'address.pin':
 	{
-   	type : Date, 
+   	type : Number, 
         optional : true
 	},
 is_critical : {
 	type:Boolean,
 	optional:true,
-       }
+       },
+image : {
+	type:String,
+	optional:true,
+}
 }});
 
 
@@ -271,7 +275,7 @@ address : {
 	},
 'address.pin':
 	{
-   	type : Date, 
+   	type : Number, 
         optional : true
 	},
 patient_id : {
@@ -341,7 +345,12 @@ doctor_fields : {
 	{
 	type : [Number],
 	optional : true,
-	}
+	},
+	
+	image : {
+	type:String,
+	optional:true,
+}
 }});
 //Doctor_pages = new Meteor.Collection("doctor");
 //Doc_pages = new Meteor.Pagination(Doctor,{perPage: 4}); 
