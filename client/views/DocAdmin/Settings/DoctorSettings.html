@@ -1,5 +1,7 @@
 <template name="DoctorSettingsAutoform">
  
+ 
+
  {{#autoForm collection="Doctor" doc=this id="insertBookForm" type="update" template="bootstrap3-horizontal"}}
     <fieldset>
 		<div class="row well white-bg ">
@@ -9,12 +11,8 @@
       {{> afQuickField name='dob'}} 
        {{> afQuickField name='address.street' rows=4}} 
        {{> afQuickField name='address.pin'}} 
-              {{> afQuickField name="maritial_status" options="allowed" noselect="true"}} 
-              {{> afQuickField name="known_allergies" options="allowed"}}
-       {{> afQuickField name="major_surgeries" options="allowed"}}
-        {{> afQuickField name="health_condition" options="allowed" noselect="true"}} 
-
-<button type="submit" class="btn btn-primary">Insert</button>
+             
+         {{> afQuickField name="image"}}
       </div>
       
       
@@ -31,14 +29,14 @@
     
     
     <button type="submit" class="btn btn-primary btn-xs btn-block">Update</button>
-  {{/autoForm}}
- {{#autoForm collection="Doctor" doc=this id="insertImageForm" type="insert" }} 
-  {{> afQuickField name="image" type="cfs-file" collection="images"}}
+ {{/autoForm}}
+  <!--{{#autoForm collection="Doctor" doc=this id="insertImageForm" type="insert" }} 
+ 
   <button type="submit">Submit</button>
-  {{/autoForm}}
+  {{/autoForm}} -->
 </template>
 <template name="DoctorSettings">
 
- {{>DoctorSettingsAutoform pat }}
+ {{>DoctorSettingsAutoform doctor }}
  
 </template>

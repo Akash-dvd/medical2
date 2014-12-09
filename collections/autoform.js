@@ -102,13 +102,13 @@ contactnos : {
      }, 
 dob : {
         type : Date,
-        label : " Date of Birth of User " , 
+        label : " Date of Birth " , 
 	optional : true	
 
      }, 
 gender : {
 	type : String , 
-	label : " Gender of User " ,
+	label : " Gender " ,
         optional : true, 
 	allowedValues : ["Male", "Female", "Unspecified"] 
      },
@@ -119,13 +119,13 @@ date_joined : {
      }, 
 blood_group : {
 	type : String , 
-	label : " Blood Group of User " ,
+	label : " Blood Group " ,
         optional : true, 
 	allowedValues : ["O+", "O-","A+", "A-","B+", "B-","AB+", "AB-","Unspecified"] 
      },
 city : {
         type : String,
-        label : " City of  user " , 
+        label : " City " , 
 	max : 20 , 
 	optional : true
      }, 
@@ -212,7 +212,7 @@ services: {
 },
 username : {
         type : String,
-        label : " Email " , 
+        label : " Name" , 
 	max : 50,
 	optional : true
      }, 
@@ -230,13 +230,13 @@ contactnos : {
      }, 
 dob : {
         type : Date,
-        label : " Date of Birth of User " , 
+        label : " Date of Birth " , 
 	optional : true	
 
      }, 
 gender : {
 	type : String , 
-	label : " Gender of User " ,
+	label : " Gender " ,
         optional : true, 
 	allowedValues : ["Male", "Female", "Unspecified"] 
      },
@@ -247,13 +247,13 @@ date_joined : {
      }, 
 blood_group : {
 	type : String , 
-	label : " Blood Group of User " ,
+	label : " Blood Group " ,
         optional : true, 
 	allowedValues : ["O+", "O-","A+", "A-","B+", "B-","AB+", "AB-","Unspecified"] 
      },
 city : {
         type : String,
-        label : " City of  user " , 
+        label : " City " , 
 	max : 20 , 
 	optional : true
      }, 
@@ -454,7 +454,7 @@ schema : {
 _id : {
         type : String,
         unique : true,  
-        label : " Appointment ID" 
+        label : " Workplace ID" 
      }, 
 doctor_id : { 
 	optional : true,
@@ -462,7 +462,8 @@ doctor_id : {
      },
 name : { 
         optional : true,
-	type : String
+	type : String,
+	label : " Workplace Name"
      },
 city : { 
 	optional : true,
@@ -479,12 +480,13 @@ address : {
 	},
 'address.pincode':
 	{
-   	type : Date, 
+   	type : Number, 
         optional : true
 	},
 type : { 
 	optional : true,
-	type : String
+	type : String,
+	allowedValues: ["Clinic", "Hospital"]
      },
 slot_duration : { 
 	optional : true,        

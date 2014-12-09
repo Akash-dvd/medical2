@@ -6,7 +6,7 @@ AutoForm.hooks({
 	doctorpasswordreset_form_email : {
 		formToDoc: function(doc, ss, formId){
 			str=document.URL;
-			doc.client_container=str.replace(Meteor.absoluteUrl() + "reset_password/", "");
+			doc.client_container=str.replace(Meteor.absoluteUrl() + "ResetPassword/", "");
 			console.log(doc);
 			return doc;
 		},

@@ -28,7 +28,11 @@
           </li>
           
           <li>
-			<a href="{{pathFor 'DoctorSettings'}}#"><i class="fa fa-cog"></i> <span class="nav-label">Settings</span> </a>
+			<a href="{{pathFor 'Index'}}#"><i class="fa fa-cog"></i> <span class="nav-label">Settings</span><span class="fa arrow"></span> </a>
+             <ul class="nav nav-second-level">
+				<li><a href="{{pathFor 'DoctorSettings'}}">Personal Settings</a></li>
+				<li><a href="{{pathFor 'WorkPlaceSettings'}}">Workplace Settings</a></li>
+             </ul>
           </li>
           
           <li>
