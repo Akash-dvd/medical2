@@ -3,7 +3,6 @@
  {{#autoForm collection="Patient" doc=this id="insertBookForm" type="update" template="bootstrap3-horizontal"}}
     <fieldset>
 		<div class="row well white-bg ">
-      <legend>Profile Settings</legend>
     <div class="col-sm-6">  {{> afQuickField name='username' template="bootstrap3-horizontal"}} 
       {{> afQuickField name="gender" options="allowed"}}
       {{> afQuickField name='dob'}} 
@@ -45,6 +44,34 @@
 </template>
 <template name="PatientSettings">
 
- {{>PatientSettingsAutoform pat }}
+ 
+ 
+ <div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>Personal Settings</h5>
+						<div class="ibox-tools">
+							<a class="collapse-link"> <i class="fa fa-chevron-up"></i> </a>
+							<a class="dropdown-toggle" data-toggle="dropdown" href="form_wizard.html#"> <i class="fa fa-wrench"></i> </a>
+							<ul class="dropdown-menu dropdown-user">
+								<li>
+									<a href="form_wizard.html#">Config option 1</a>
+								</li>
+								<li>
+									<a href="form_wizard.html#">Config option 2</a>
+								</li>
+							</ul>
+							<a class="close-link"> <i class="fa fa-times"></i> </a>
+						</div>
+					</div>
+					<div class="ibox-content">
+							{{>PatientSettingsAutoform pat }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
  
 </template>

@@ -8,11 +8,13 @@ insecure
 aldeed:simple-schema
 accounts-base
 iron:router
-aldeed:autoform
 aldeed:collection2
-spin
 mizzao:bootstrap-3
 styling
 pfafman:font-awesome-4
 chhib:morris
+sacha:spin
+email
+aldeed:autoform@1.0.0
+mrt:peity
 
