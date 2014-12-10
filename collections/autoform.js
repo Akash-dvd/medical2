@@ -151,7 +151,44 @@ is_critical : {
 image : {
 	type:String,
 	optional:true,
-}
+	   },
+maritial_status: {
+	type: String,
+	label : " Maritial Status " ,
+        optional : true, 
+	allowedValues : ["Married","Un-Married","Divorced"]
+},
+known_allergies: {
+	type: String,
+	label : " Known Allergies" ,
+        optional : true, 
+	allowedValues : ["Etc","y","Skin","X"]
+},
+major_surgeries: {
+	type: String,
+	label : " Major Surgeries" ,
+        optional : true, 
+	allowedValues : ["Heart","Eye","Head","XYZ"]
+},
+health_condition: {
+	type: String,
+	label : " Health Condition" ,
+        optional : true, 
+	allowedValues : ["Good","Bad"]
+},
+food_habbit: {
+	type: String,
+	label : " Food Habbit" ,
+        optional : true, 
+	allowedValues : ["Veg","Non-Veg"]
+},
+family_physician: {
+	type: String,
+	label : " Family Physician" ,
+        optional : true, 
+},
+
+ 
 }});
 
 
