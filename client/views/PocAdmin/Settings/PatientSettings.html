@@ -12,8 +12,7 @@
               {{> afQuickField name="known_allergies" options="allowed"}}
        {{> afQuickField name="major_surgeries" options="allowed"}}
         {{> afQuickField name="health_condition" options="allowed" noselect="true"}} 
-
-<button type="submit" class="btn btn-primary">Insert</button>
+              {{> afQuickField name='image'}} 
       </div>
       
       
@@ -37,10 +36,7 @@
     
     <button type="submit" class="btn btn-primary btn-xs btn-block">Update</button>
   {{/autoForm}}
- {{#autoForm collection="Patient" doc=this id="insertImageForm" type="insert" }} 
-  {{> afQuickField name="image" type="cfs-file" collection="images"}}
-  <button type="submit">Submit</button>
-  {{/autoForm}}
+  
 </template>
 <template name="PatientSettings">
 
