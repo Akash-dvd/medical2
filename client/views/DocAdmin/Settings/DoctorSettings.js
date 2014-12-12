@@ -1,6 +1,6 @@
 Template.DoctorSettings.helpers ({
 	doctor : function () {
-		return Doctor.findOne({_id:Session.get("docId")});
+		return Doctor.findOne({_id:Session.get("doc_id")});
 	}
 });
 

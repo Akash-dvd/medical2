@@ -47,6 +47,6 @@ Template.AppointmentWizard.events({
   },
 	'click .b5': function(e) {
     e.preventDefault();
-	 Appointments.update({"clinic_id":Session.get("clinic_id"),"user_id":Session.get("patient_id"),"doctor_id":Session.get("docId")},{$set :{"status":"closed"}});
+	 Appointments.update({"clinic_id":Session.get("clinic_id"),"user_id":Session.get("patient_id"),"doctor_id":Session.get("doc_id")},{$set :{"status":"closed"}});
   }
 });

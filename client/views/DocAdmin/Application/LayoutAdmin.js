@@ -39,12 +39,12 @@ Template.LayoutAdmin.rendered = function(){
 
 Template.LayoutAdmin.helpers({
 	name :  function() {
-		return	Doctor.findOne({"_id":Session.get("docId")},{'username': 1 ,'_id':0});
+		return	Doctor.findOne({"_id":Session.get("doc_id")},{'username': 1 ,'_id':0});
 	},
 	img :  function() {
-		return	Doctor.findOne({"_id":Session.get("docId")},{'image': 1 ,'_id':0});
+		return	Doctor.findOne({"_id":Session.get("doc_id")},{'image': 1 ,'_id':0});
 	},
 	degree :  function() {
-		return	Doctor.findOne({"_id":Session.get("docId")},{'doctor_fields': 1 });
+		return	Doctor.findOne({"_id":Session.get("doc_id")},{'doctor_fields': 1 });
 	},
 });
