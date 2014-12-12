@@ -5,16 +5,19 @@
 
 meteor-platform
 insecure
-aldeed:simple-schema
 accounts-base
 iron:router
-aldeed:collection2
 mizzao:bootstrap-3
-styling
 pfafman:font-awesome-4
 chhib:morris
-sacha:spin
 email
-aldeed:autoform@1.0.0
+alanning:roles
+vsivsi:job-collection
+aldeed:autoform
+aldeed:collection2
+aldeed:simple-schema
+mrt:moment
+styling
+sacha:spin
 mrt:peity
 

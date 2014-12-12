@@ -1,31 +1,31 @@
 SimpleSchema.debug = true;
 
-Notifications = new Meteor.Collection("notifications",{
-schema : {
+
+Notifications = new Mongo.Collection("notifications");
+Notifications.attachSchema(new SimpleSchema({
 	belongs_to: {
 		type : String,
 		label : " User ID " 
-		}, 
+	}, 
 	contents : {
 		type : [Object],
 		optional : true
-		}, 
+	}, 
 	'contents.$.message':
 		{
 		type : String, 
 		optional : true
-		},
+	},
 	'contents.$.date':
 		{
 		type : Date, 
 		optional : true
-		}
 	}
-});
+}));
 
 
-Patient = new Meteor.Collection("patients",{
-schema : {
+Patient = new Mongo.Collection("patients");
+Patient.attachSchema(new SimpleSchema({
 _id : {
         type : String,
         unique : true,  
@@ -189,13 +189,12 @@ family_physician: {
 },
 
  
-}});
+}));
 
 
-// docotor record has same copy as user fields initially  ... 
 
-Doctor = new Meteor.Collection("doctor",{
-schema : {
+Doctor = new Mongo.Collection("doctor");
+Doctor.attachSchema(new SimpleSchema({
 _id : {
         type : String,
         unique : true,  
@@ -203,6 +202,19 @@ _id : {
         label : " Doctor ID " ,
         optional : true
      }, 
+username : {
+        type : String,
+        label : " Name" , 
+	max : 50,
+	optional : true
+     }, 
+password : {
+	        type : String,
+        label : " Password " , 
+	max : 100,
+	optional : true
+	},
+
 "emails.$": {
 	type: Object,
 	optional: true,
@@ -216,6 +228,7 @@ _id : {
 	type: SimpleSchema.RegEx.Email,
 	optional: true
 },
+
 services: {
         type: Object,
         optional: true,
@@ -247,18 +260,7 @@ services: {
         max : 150,
         blackbox: true
 },
-username : {
-        type : String,
-        label : " Name" , 
-	max : 50,
-	optional : true
-     }, 
-password : {
-	        type : String,
-        label : " Password " , 
-	max : 100,
-	optional : true
-	},
+
 contactnos : {
         type : [Number],
         unique : true,  
@@ -271,12 +273,14 @@ dob : {
 	optional : true	
 
      }, 
+     	
 gender : {
 	type : String , 
 	label : " Gender " ,
         optional : true, 
 	allowedValues : ["Male", "Female", "Unspecified"] 
      },
+    
 date_joined : {
         type : Date,
         label : " Date of joining of User " , 
@@ -319,6 +323,7 @@ patient_id : {
         type : String,
         optional : true
      }, 
+     
 doctor_fields : {
       	type : Object, 
 	optional : true
@@ -387,13 +392,12 @@ doctor_fields : {
 	image : {
 	type:String,
 	optional:true,
-}
-}});
-//Doctor_pages = new Meteor.Collection("doctor");
-//Doc_pages = new Meteor.Pagination(Doctor,{perPage: 4}); 
+	}
 
-Appointments = new Meteor.Collection("appointments",{
-schema : {
+}));
+
+Appointments = new Mongo.Collection("appointments");
+Appointments.attachSchema(new SimpleSchema({
 _id : {
         type : String,
         unique : true,  
@@ -434,12 +438,10 @@ description : {
         type : String,
         optional : true,
      }
-}});
+}));
 
-
-
-Cases = new Meteor.Collection("cases",{
-schema : {
+Cases = new Mongo.Collection("cases");
+Cases.attachSchema(new SimpleSchema({
 _id : {
         type : String,
         unique : true,  
@@ -483,11 +485,10 @@ case_notes:
    	type : String,
 	optional : true
 	}
-}});
+}));
 
-//// workplace 
-Workplace = new Meteor.Collection("workplaces",{
-schema : {
+Workplace = new Meteor.Collection("workplaces");
+Workplace.attachSchema(new SimpleSchema({
 _id : {
         type : String,
         unique : true,  
@@ -558,4 +559,4 @@ slots_booked : {
 	type : String,
 	optional : true
 	},
-}});
+}));

@@ -1,7 +1,8 @@
 accounts-base@1.1.2
+alanning:roles@1.2.13
 aldeed:autoform@1.0.0
 aldeed:collection2@1.0.0
-aldeed:simple-schema@1.1.0
+aldeed:simple-schema@1.0.2
 application-configuration@1.0.3
 autoupdate@1.1.3
 base64@1.0.1
@@ -13,9 +14,10 @@ callback-hook@1.0.1
 check@1.0.2
 chhib:morris@0.0.1
 chhib:raphael@0.0.1
+coffeescript@1.0.4
 ctl-helper@1.0.4
 ctl@1.0.2
-ddp@1.0.11
+ddp@1.0.12
 deps@1.0.5
 ejson@1.0.4
 email@1.0.4
@@ -49,12 +51,12 @@ minimongo@1.0.5
 mizzao:bootstrap-3@3.3.1_1
 mobile-status-bar@1.0.1
 mongo-livedata@1.0.6
-mongo@1.0.8
+mongo@1.0.9
 mrt:moment@2.6.0
 mrt:peity@0.0.2
 observe-sequence@1.0.3
 ordered-dict@1.0.1
-pfafman:font-awesome-4@4.2.0_2
+pfafman:font-awesome-4@4.2.0_4
 random@1.0.1
 reactive-dict@1.0.4
 reactive-var@1.0.3
@@ -72,5 +74,6 @@ tracker@1.0.3
 ui@1.0.4
 underscore@1.0.1
 url@1.0.2
+vsivsi:job-collection@0.0.18
 webapp-hashing@1.0.1
 webapp@1.1.4
