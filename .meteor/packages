@@ -1,24 +1,32 @@
 # Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
 #
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
 meteor-platform
 accounts-base
-iron:router
 mizzao:bootstrap-3
 pfafman:font-awesome-4
 chhib:morris
 email
+alanning:roles
 vsivsi:job-collection
-mrt:moment
-styling
-sacha:spin
-mrt:peity
-insecure
 aldeed:autoform
 aldeed:collection2
 aldeed:simple-schema
-forwarder:autoform-wizard
-alanning:roles
-
+mrt:moment
+styling
+sacha:spin
+cfs:gridfs
+cfs:standard-packages
+msavin:mongol
+accounts-ui
+accounts-password
+imap
+npm-bcrypt
+aldeed:autoform-bs-datepicker
+userman
+insecure
+d3
+chart:chart

@@ -1,0 +1,8 @@
+{
+	"name": "meteor-node-imap",
+	"description": "Meteor smart package of node-imap.",
+	"homepage": "https://github.com/mscdex/node-imap",
+	"author": "David Watson",
+	"version": "0.0.4",
+	"git": "https://github.com/mscdex/node-imap.git"
+}

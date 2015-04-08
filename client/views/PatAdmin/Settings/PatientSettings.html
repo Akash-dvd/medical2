@@ -1,0 +1,87 @@
+<template name="PatientSettingsAutoform">
+ 
+ {{#autoForm collection="Patient" doc=this id="insertBookForm" type="update" template="bootstrap3-horizontal"}}
+    <fieldset>
+		<div class="row well white-bg ">
+    <div class="col-sm-6">  {{> afQuickField name='Name' template="bootstrap3-horizontal"}} 
+      {{> afQuickField name="gender" options="allowed" firstOption="Gender"}}
+      {{> afQuickField name='dob'}} 
+       {{> afQuickField name='address.street' rows=4}} 
+       {{> afQuickField name='address.pin'}} 
+              {{> afQuickField name="maritial_status" options="allowed" noselect="true"}} 
+              {{> afQuickField name="known_allergies" options="allowed" firstOption="Known Allergies"}}
+       {{> afQuickField name="major_surgeries" options="allowed" firstOption="Major Surgeries"}}
+        {{> afQuickField name="health_condition" options="allowed" noselect="true"}} 
+          <!--    {{> afQuickField name='image'}} -->
+              {{> afQuickField name="profilePic"}}
+<button type="submit" class="btn btn-primary">Update</button>
+      </div>
+      
+      
+     <div class="col-sm-6"> {{> afQuickField name='contactnos'}}
+     {{> afQuickField name='emails'}}
+     {{> afQuickField name="blood_group" options="allowed" firstOption="Blood Group"}} 
+      {{> afQuickField name="food_habbit" options="allowed" noselect="true"}} 
+      {{> afQuickField name='family_physician'}}
+      {{> afFieldInput name="family_physician" type="select2" options=optionsHelper}} 
+      
+      <!--
+      {{> afFormGroup name="family_physician" type="select2" select2Options=optionsHelper}}
+      
+         {{> afFieldInput name="family_physician" type="select2" select2Options=options }}
+      -->
+        </div>
+      </div>
+      
+      
+    </fieldset>
+    
+    
+    
+    <button type="submit" class="btn btn-primary btn-xs btn-block">Update</button>
+  {{/autoForm}}
+  
+</template>
+<template name="PatientSettings">
+ {{#if Template.subscriptionsReady}}
+ 
+ 
+ <div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>Personal Settings</h5>
+						<div class="ibox-tools">
+							<a class="collapse-link"> <i class="fa fa-chevron-up"></i> </a>
+							<a class="dropdown-toggle" data-toggle="dropdown" href="form_wizard.html#"> <i class="fa fa-wrench"></i> </a>
+							<ul class="dropdown-menu dropdown-user">
+								<li>
+									<a href="form_wizard.html#">Config option 1</a>
+								</li>
+								<li>
+									<a href="form_wizard.html#">Config option 2</a>
+								</li>
+							</ul>
+							<a class="close-link"> <i class="fa fa-times"></i> </a>
+						</div>
+					</div>
+					<div class="ibox-content">
+							{{>PatientSettingsAutoform pat }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ {{else}}
+    Loading...
+  {{/if}}
+</template>
+
+<template name="insertForm">
+  {{#autoForm id="insertForm" type="update" collection="Docs"}}
+  {{> afQuickField name="name"}}
+  {{> afQuickField name="fileId" type="cfs-file" collection="files"}}
+  <button type="submit">Submit</button>
+  {{/autoForm}}
+</template>

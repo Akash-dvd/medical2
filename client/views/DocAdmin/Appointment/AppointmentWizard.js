@@ -17,6 +17,15 @@ Template.AppointmentWizard.helpers({
     return Patient.findOne({"_id":Session.get("patient_id")});
 	}
 });
+Template.AppointmentWizard.onCreated(function () {
+  // Use this.subscribe inside onCreated callback
+  
+  this.subscribe('notifications', Session.get("docId"));
+  this.subscribe('loggeddoctor');
+  this.subscribe('appointments', Session.get("docId"));
+  this.subscribe('docworkplaces', Session.get("docId"));
+  this.subscribe('patients');
+});
 Template.AppointmentWizard.events({
 	'click .b1': function(e) {
     e.preventDefault();
@@ -47,6 +56,6 @@ Template.AppointmentWizard.events({
   },
 	'click .b5': function(e) {
     e.preventDefault();
-	 Appointments.update({"clinic_id":Session.get("clinic_id"),"user_id":Session.get("patient_id"),"doctor_id":Session.get("doc_id")},{$set :{"status":"closed"}});
+	 Appointments.update({"clinic_id":Session.get("clinic_id"),"user_id":Session.get("patient_id"),"doctor_id":Session.get("docId")},{$set :{"status":"closed"}});
   }
 });

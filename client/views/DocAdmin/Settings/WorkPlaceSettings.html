@@ -1,51 +1,44 @@
 <template name="WorkPlaceSettingsAutoform">
-	{{#autoForm collection="Workplace" doc=this id="insertBookForm" type="update" template="bootstrap3-horizontal"}}
-	<div class="row well white-bg ">
-	<fieldset>
-		
-		<div class="col-sm-6">  {{> afQuickField name='name' template="bootstrap3-horizontal"}}
-		{{> afQuickField name='address.street' rows=4}}
-		{{> afQuickField name='address.pincode'}}
-		{{> afQuickField name='city'}}
-		{{> afQuickField name='type' options="allowed" noselect="true"}}
-		{{> afQuickField name='slot_duration'}}
-		{{> afQuickField name='slots_booked'}}
-		
+	{{#autoForm collection="Workplace" doc=this id=makeUniqueWPId type="update" template="bootstrap3-horizontal"}}
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading_{{_id}}">
+				<h4 class="panel-title">
+					<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#{{_id}}" aria-expanded="false" aria-controls="collapseTwo">{{name}}</a>
+				</h4>
+			</div>
+			<div id="{{_id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_{{_id}}">
+				<div class="panel-body">
+					<fieldset>
+						<div class="col-sm-6">
+							{{> afQuickField name='name' template="bootstrap3-horizontal"}}
+							{{> afQuickField name='address.street' rows=4}}
+							{{> afQuickField name='address.pincode'}}
+							{{> afQuickField name='city'}}
+							{{> afQuickField name='contact_no'}}
+							{{> afQuickField name='type' options="allowed" noselect="true"}}
+							{{> afQuickField name='slot_duration'}}
+						</div>
+						<div class="col-sm-6">
+							{{> afQuickField name='slots_description'}}
+						</div>
+					</fieldset>
+					<button type="submit" class="btn btn-primary btn-xs btn-block">Update</button>
+				</div>
+			</div>
 		</div>
-		
-		<div class="col-sm-6"> {{> afQuickField name='slots_description'}}
-		</div>
-		</fieldset>
-		<button type="submit" class="btn btn-primary btn-xs btn-block">Update</button>
-		</div>
-		{{/autoForm}}
+	{{/autoForm}}
 </template>
 
 <template name="WorkPlaceSettings">
-	<div class="wrapper wrapper-content animated fadeInRight">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="ibox float-e-margins">
-					<div class="ibox-title">
-						<h5>Workplace Settings</h5>
-						<div class="ibox-tools">
-							<a class="collapse-link"> <i class="fa fa-chevron-up"></i> </a>
-							<a class="dropdown-toggle" data-toggle="dropdown" href="form_wizard.html#"> <i class="fa fa-wrench"></i> </a>
-							<ul class="dropdown-menu dropdown-user">
-								<li>
-									<a href="form_wizard.html#">Config option 1</a>
-								</li>
-								<li>
-									<a href="form_wizard.html#">Config option 2</a>
-								</li>
-							</ul>
-							<a class="close-link"> <i class="fa fa-times"></i> </a>
-						</div>
-					</div>
-					<div class="ibox-content">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox-content">
+				<div class="row well white-bg ">
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 						{{#each  cDoctorWorkplace}}
 							{{>WorkPlaceSettingsAutoform }}
 						{{/each}}
+						<canvas id="smthg" width="600" height="400"></canvas>
 					</div>
 				</div>
 			</div>

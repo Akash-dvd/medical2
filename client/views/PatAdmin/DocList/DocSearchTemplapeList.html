@@ -1,0 +1,36 @@
+<template name="DocSearchTemplateList">
+	{{#if Template.subscriptionsReady}}
+	<div class="row col-lg-5  col-xs-offset-1 well">
+		<div class="col-lg-5 col-xs-5">
+			<img src="{{image}}" class="img-circle"><br>
+		</div>
+		<div class="col-lg-7 col-xs-7">
+			<table>
+			  <tr>
+				<td>Name :</td>
+				<td>{{name}}</td>
+			  </tr>
+			  <tr>
+				<td>City :</td>
+				<td>{{city}}</td>
+			  </tr>
+			  <tr>
+				<td>About-Me :</td>
+				<td><i class="fa fa-{{gender}}"></i> and {{doctor_fields.short_description}}</td>
+			  </tr>
+			  <tr>
+				<td>Speciality :</td>
+				<td>{{doctor_fields.speciality}}</td>
+			  </tr>
+			  <tr>
+				<td>Select :&nbsp;</td>
+				<td><button class="btn btn-default btn-xs" type="button"><i class="fa fa-check"></i>&nbsp;Select</button></td>
+			  </tr>
+			</table>
+		</div>
+	</div>
+	{{else}}
+    Loading...
+  {{/if}}
+</template>
+

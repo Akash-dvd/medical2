@@ -1,10 +1,11 @@
 <template name="AppointmentWizard">  
+	{{#if Template.subscriptionsReady}}
 	<div class="wrapper wrapper-content animated fadeInRight">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="ibox float-e-margins">
 					<div class="ibox-title">
-						<h5>Basic Wizzard</h5>
+						<h5>Appointment Wizard</h5>
 						<div class="ibox-tools">
 							<a class="collapse-link"> <i class="fa fa-chevron-up"></i> </a>
 							<a class="dropdown-toggle" data-toggle="dropdown" href="form_wizard.html#"> <i class="fa fa-wrench"></i> </a>
@@ -80,4 +81,7 @@
 			</div>
 		</div>
 	</div>
+	{{else}}
+    Loading...
+  {{/if}}
 </template>

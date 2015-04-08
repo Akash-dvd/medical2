@@ -1,4 +1,5 @@
 <template name="Index">
+	{{#if Template.subscriptionsReady}}
   <div class="row  border-bottom white-bg dashboard-header">
     <div class="col-sm-4">
       {{>IndexNotifications}}
@@ -19,6 +20,9 @@
       {{>insertBookForm}}-->
     </div>
   </div>
+  {{else}}
+    Loading...
+  {{/if}}
 </template>
 <template name="insertBookForm">
   {{> quickForm collection="Books" id="insertBookForm" type="insert"}}

@@ -1,0 +1,15 @@
+<template name="Payment">
+	<div class="panel-heading">Final Confirmation</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			{{#autoForm collection="Appointments" id="aconfirm_form" type="method" meteormethod="appointmentconfimation" }} 
+				<fieldset>
+					{{> afFieldInput name='description' placeholder="Description"}}
+					{{> afQuickField name="status" options="allowed" firstOption="status"}}
+				</fieldset>
+				<button type="submit" class="btn btn-w-m btn-primary">Submit</button>
+			{{/autoForm}}
+		</div>
+	<div class="panel-footer">Panel footer</div>
+</div>
+</template>

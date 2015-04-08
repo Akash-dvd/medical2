@@ -1,0 +1,75 @@
+<template name="DocSelectedTemplate">
+	{{#if Template.subscriptionsReady}}
+	<div class="col-lg-10 col-lg-offset-1">
+		<div class="row well ">
+		  <div class="col-lg-3 col-xs-3 b-r">
+			<img src="{{image}}" class="img-circle"><br>
+			 Name     : {{name}} <br>
+			 Qualification : {{doctor_fields.doctor_qualification.[0].course_name}}<br>
+			 About-Me : <i class="fa fa-{{gender}}"></i> and {{doctor_fields.short_description}}<br>
+			 Speciality : {{doctor_fields.speciality}}<br>
+		  </div>
+		  <div class="col-lg-3 col-xs-4 b-r">
+			<h3>Details</h3>
+			Degree :{{#each doctor_fields.doctor_qualification }} {{course_name}} ,
+			{{/each}}
+			<br>
+			Year Of Passing : {{#each doctor_fields.doctor_qualification}} {{year_of_passing}}
+			{{/each}}
+			<br>
+			College : {{#each doctor_fields.doctor_qualification}} {{college}}
+			{{/each}}
+			<br>
+			City : {{#each doctor_fields.doctor_qualification}} {{city}}
+			{{/each}}
+			<br>
+			Country : India <br>
+			
+		  </div>
+		  <div class="col-lg-3 col-xs-3 b-r">
+			<h3>Contact Informations</h3>
+			<i class="fa fa-envelope"></i> : <a href="mailto:{{email}}" >{{emails.[0].address}}</a><br>
+			<i class="fa fa-phone"></i> : {{contactnos.[0]}} , {{contact_nos.[1]}}<br>
+			Street   : {{address.street}}<br>
+			Pin      : {{address.pin}}<br>
+			City     : {{city}}<br>
+			
+			
+		  </div>
+		  <div class="col-lg-3 col-xs-3">
+			<h3>Booking</h3>
+			<!--
+			{{#autoForm collection="Appointments" id="Appointment_form" type="insert"}}
+				<fieldset>
+				{{> afFieldInput name='clinic_id' options=a_facility}}
+				{{> afFieldInput name='description' type=datetime}}
+				<button type="submit" class="btn btn-primary btn-block">Click</button>
+				</fieldset>
+			{{/autoForm}}
+			-->
+			<div class="btn-group">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				  Select Facility
+				  <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					{{#each c_facility}}
+						{{>DocFacilityList }}
+					{{/each}}
+				</ul>
+			</div>
+			<h3>{{>TimeSlot}}</h3>
+				YA WHATEVER
+				<br>
+			<button type="button" class="btn btn-w-m btn-primary">Next</button>
+		  </div>
+		</div>
+	</div>
+	{{else}}
+    Loading...
+  {{/if}}
+</template>
+
+<template name="DocFacilityList">
+	<li class="droplist"><a href="#">{{facility_place.street}}</a></li>
+</template>

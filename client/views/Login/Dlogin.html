@@ -3,45 +3,42 @@
 		<div class=" offset1">
 			<div class="tabbable custom-tabs tabs-animated  flat flat-all hide-label-980 shadow track-url auto-scroll">
 				<ul class="nav nav-tabs">
-					<li class="active"><a href="#panel1" data-toggle="tab" class="active "><i class="fa fa-unlock"></i>&nbsp;<span class="glyphicons glyphicons-user-lock" aria-hidden="true"></span></a></li>
+					<li class="active"><a href="#panel1" data-toggle="tab" class="active "><i class="fa fa-unlock"></i>&nbsp;<span class="glyphicons glyphicons-user-lock" aria-hidden="true"></span></a></li>
 					<li><a href="#panel2" data-toggle="tab"><i class="fa fa-arrow-left"></i>&nbsp;<span></span></a></li>
 					<li><a href="#panel3" data-toggle="tab"><i class="fa fa-key"></i>&nbsp;<span></span></a></li>
 				</ul>
 				<div class="tab-content ">
 					<div class="tab-pane active" id="panel1">
-						{{#autoForm collection="Doctor" id="dlogin_form" type="method" meteormethod="doctorlogin" }}
-							<fieldset>
-								<legend>Physician Login</legend>
-								{{> afFieldInput name='username' placeholder="Email"}}
-								{{> afFieldInput name='password' placeholder="Password" type="password"}}
-								<button type="submit" class="btn btn-primary btn-block">Log in</button>
-							</fieldset>
-						{{/autoForm}}
+						{{> quickForm id="dlogin_form" schema="LoginSchema.Dlogin"}}
 					</div>
 					<div class="tab-pane" id="panel2">
-					{{#autoForm collection="Doctor" id="dregister_form" type="method" meteormethod="doctorregister" }} 
-							<fieldset>
-								<legend>Register</legend>
-								{{> afFieldInput name='username' placeholder="Email"}}
-								{{> afFieldInput name='password' placeholder="Password" type="password" options="allowed"}}
-								{{> afFieldInput name="gender" placeholder="gender" options="allowed"}}
-								{{> afFieldInput name='dob' placeholder="Date Of Birth"}}
-								{{> afFieldInput name="blood_group" placeholder="BLOOD GROUP" options="allowed"}}
-								{{> afFieldInput name='city' placeholder="CITY"}}
-								<button type="submit" class="btn btn-primary btn-block">Register</button>
-							</fieldset>
-						{{/autoForm}}
+						{{> quickForm id="dregister_form" schema="LoginSchema.Dregister" }}
 					</div>
 					<div class="tab-pane" id="panel3">
-						{{#autoForm collection="Doctor" id="doctorpasswordreset_form" type="method" meteormethod="doctorpasswordreset" }}
-							<fieldset>
-								<legend>Password Reset</legend>
-								{{> afFieldInput name='username' placeholder="Email"}}
-								{{> afFieldInput name='password' placeholder="Old Password" type="password"}}
-								<button type="submit" class="btn btn-primary btn-block">Reset</button>
-							</fieldset>
-						{{/autoForm}}  
+						{{> quickForm id="dregister_form" schema="LoginSchema.Dpassreset"}}
 					</div>
+					<div class="modal fade" id="successModal" aria-labelledby="successModalLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+						<div class="modal-content">
+						  <div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="successModalLabel">New message</h4>
+						  </div>
+						  <div class="modal-body">
+							
+							  <div class="form-group">
+								<label for="recipient-name" class="control-label">Message:</label>
+								
+							  </div>
+							 
+						  </div>
+						  <div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							
+						  </div>
+						</div>
+					  </div>
+					</div>        
 				</div>
 			</div>
 		</div>

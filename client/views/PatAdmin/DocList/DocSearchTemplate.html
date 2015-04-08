@@ -1,0 +1,64 @@
+<template name="DocSearchTemplate">
+	{{#if Template.subscriptionsReady}}
+	<div class="ibox-content">
+		<div class="panel blank-panel">
+			<div class="panel-heading">
+				<div class="panel-options">
+					<ul class="nav nav-tabs">
+						<li class=""><a data-toggle="tab" href=""></a></li>
+						<li class="active"><a href="#tab-1" data-toggle="tab">All</a></li>
+						<li><a href="#tab-2" data-toggle="tab">Allopathic</a></li>
+						<li><a href="#tab-1" data-toggle="tab">Homeopathic</a></li>
+						<li><a href="#tab-2" data-toggle="tab">Ayurvedic</a></li>
+					</ul>
+				</div>
+				<div class="pull-right">
+					<ul class="pagination">
+						<li class="disabled"><a href="#">&laquo;</a></li>
+						<li class="active"><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#">&raquo;</a></li>
+					</ul>
+				</div>
+				<div class="col-lg-1 col-xs-1">
+					<ul class="nav nav-tabs tabs-left vertical-text">
+						<li class="active"><a data-toggle="tab" href="#tab-1">All</a></li>
+						<li class=""><a data-toggle="tab" href="#tab-2">Doctors</a></li>
+						<li class=""><a data-toggle="tab" href="#tab-2">Hospitals</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="tab-content">
+					<div id="tab-1" class="tab-pane active col-lg-11 col-xs-11 .col-lg-offset-1 .col-xs-offset-1">
+						{{#each c_Doc}}
+							 {{>DocSearchTemplateList }}
+						{{/each}}
+					</div>
+					<div id="tab-2" class="tab-pane col-lg-11 col-xs-11 .col-md-offset-3 .col-md-offset-3">
+						<strong>Donec quam felis</strong>
+						<p>Thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath</p>
+						<p>I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="pull-right">
+		<ul class="pagination">
+			<li class="disabled"><a href="#">&laquo;</a></li>
+			<li class="active"><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">&raquo;</a></li>
+		</ul>
+	</div>
+	{{else}}
+    Loading...
+  {{/if}}
+</template>

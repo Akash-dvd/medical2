@@ -1,0 +1,85 @@
+<template name="Dsearch">
+	{{#if Template.subscriptionsReady}}
+	<div class="wrapper wrapper-content animated fadeIn">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>Basic M+ Panel <small class="m-l-sm">This is custom panel</small></h5>
+						<div class="ibox-tools">
+							<a class="collapse-link"> <i class="fa fa-chevron-up"></i> </a>
+							<a class="dropdown-toggle" data-toggle="dropdown" href="tabs_panels.html#"> <i class="fa fa-wrench"></i> </a>
+							<ul class="dropdown-menu dropdown-user">
+								<li>
+									<a href="tabs_panels.html#">Config option 1</a>
+								</li>
+								<li>
+									<a href="tabs_panels.html#">Config option 2</a>
+								</li>
+							</ul>
+							<a class="close-link"> <i class="fa fa-times"></i> </a>
+						</div>
+					</div>
+					<div class="ibox-content">
+						<div class="col-lg-12">
+							{{#if states.[2].state }}
+								<div class="col-lg-7">
+									<button class="btn btn-success  b1" type="button"><i class="fa fa-check"></i>&nbsp;1.Doctor Selection</button>
+									<button class="btn btn-success  b2" type="button"><i class="fa fa-check"></i>&nbsp;2.Appointment Selection</button>
+									<button class="btn btn-primary b3" type="button"><i class="fa fa-paste"></i>&nbsp;3.Payments</button>
+								</div>
+								<div class="col-lg-4 col-lg-offset-1">
+									<div class="pull-right">
+										<button class="btn btn-success b4" type="button"><i class="fa fa-check"></i>&nbsp;Finish</button>
+										<!--<button class="btn btn-success b5" type="button"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Next</button>-->
+									</div>
+								</div>
+							{{else}}
+								{{#if states.[1].state}}
+									<div class="col-lg-7">
+										<button class="btn btn-success  b1" type="button"><i class="fa fa-check"></i>&nbsp;1.Doctor Selection</button>
+										<button class="btn btn-primary b2" type="button"><i class="fa fa-upload"></i>&nbsp;2.Appointment Selection</button>
+										<button class="btn btn-primary btn-outline b3" type="button"><i class="fa fa-paste"></i>&nbsp;3.Payments</button>
+									</div>
+									<div class="col-lg-4 col-lg-offset-1">
+										<div class="pull-right">
+											<button class="btn btn-success b4" type="button"><i class="fa fa-long-arrow-left"></i>&nbsp;Previous</button>
+											<!--<button class="btn btn-success b5" type="button"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Next</button>-->
+										</div>
+									</div>
+								{{else}}
+									<div class="col-lg-7">
+										<button class="btn btn-primary b1" type="button"><i class="fa fa-check"></i>&nbsp;1.Doctor Selection</button>
+										<button class="btn btn-primary btn-outline b2" type="button"><i class="fa fa-upload"></i>&nbsp;2.Appointment Selection</button>
+										<button class="btn btn-primary btn-outline b3" type="button"><i class="fa fa-paste"></i>&nbsp;3.Payments</button>
+									</div>
+									<div class="col-lg-4 col-lg-offset-1">
+										<div class="pull-right">
+											<!--<button class="btn btn-success b4" type="button"><i class="fa fa-check"></i>&nbsp;Finish</button>
+											<button class="btn btn-success b5" type="button"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Next</button>-->
+										</div>
+									</div>
+								{{/if}}
+							{{/if}}
+						</div>
+						<br><br><br>
+						<div class="white-bg">
+							{{#if states.[2].state }}
+								{{>Payment Patient}}
+							{{else}}
+								{{#if states.[1].state}}
+									{{>DocAppointment}}
+								{{else}}
+									{{>DocSearchTemplate}}
+								{{/if}}
+							{{/if}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{else}}
+    Loading...
+  {{/if}}
+</template>

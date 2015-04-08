@@ -1,5 +1,5 @@
 <template name="Logins">
-
+ {{#if Template.subscriptionsReady}}
 	<nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid white-bg">
 	
@@ -14,16 +14,8 @@
 		</div>
 		<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
 			<div class="row well">
-			  <div class="col-lg-2 col-lg-offset-2">.{{>Symptom}}</div>
+			  <div class="col-lg-2 col-lg-offset-2">.{{Symptom}}</div>
 			  <div class=" col-lg-6">
-				{{#autoForm class="form-inline " collection="Doctor" id="dsearch_login_form" type="method" meteormethod="doctorfind" }}
-					<fieldset>
-						
-						{{> afFieldInput name='password' placeholder="Place"}}
-						{{> afFieldInput name='password' placeholder="Password" type="date"}}
-						<button type="submit" class="btn btn-primary">Enquire</button>
-					</fieldset>
-				{{/autoForm}}			  
 			  </div>
 			</div>
 
@@ -42,7 +34,7 @@
 			</div>
 			<div class="video-hover">
 				<br>
-				<video class="vid" width='100%' autoplay="autoplay"  loop>
+				<video class="vid" width='100%' >
 					<source src="video/video.mp4" type="video/mp4" />
 				</video>
 				<br>
@@ -53,7 +45,6 @@
 				<div class="panel-options">
 				<ul class="nav nav-justified">
 					<li class="active"><a data-toggle="tab" href="#tabpatinet"><i class="fa fa-user-md fa-2x"></i>Physician</a></li>
-					
 					<li class=""><a data-toggle="tab" href="#tabadmin"><i class="fa fa-wheelchair fa-2x"></i>Patient</a></li>
 				</ul>
 				</div>
@@ -61,17 +52,19 @@
 			<div class="panel-body">
 				<div class="tab-content">
 					<div id="tabpatinet" class="tab-pane active well">
-					{{>Dlogin}}
+						{{>Dlogin}}
 					</div>
 					<div id="tabadmin" class="tab-pane well">
 						{{>Plogin}}
-						</div>
 					</div>
+				</div>
 			</div>
 		</div>
 		<p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
 	</div>
-
+{{else}}
+    Loading...
+  {{/if}}
 </template>
 
 

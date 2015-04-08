@@ -3,6 +3,6 @@ Package.describe({
 });
 
 Package.on_use(function (api){
-	api.add_files('load.js', 'client');
-	api.add_files('metismenu.js', 'client');
+	api.use(['jquery'], 'client');
+	api.add_files(['load.js','metismenu.js','pace.min.js','jquery.flipster.min.js'], 'client');
 });

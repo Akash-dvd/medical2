@@ -1,5 +1,5 @@
 <template name="polymerdemo">
-
+{{#if Template.subscriptionsReady}}
   <link rel="import"	href="test.html">
 
       <test-test>
@@ -9,7 +9,9 @@
 			{{/each}}
 		</ul>
 	</test-test>
-
+{{else}}
+    Loading...
+  {{/if}}
 </template>
 
 <template name="card">

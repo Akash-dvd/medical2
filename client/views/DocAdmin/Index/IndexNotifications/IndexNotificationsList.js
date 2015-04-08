@@ -4,7 +4,7 @@ Template.IndexNotificationsList.helpers({
 	}
 });
 
-TemplateIndexNotificationsListArray.helpers({
+Template.IndexNotificationsListArray.helpers({
   //count:function() {
    // return counter;
  // },
